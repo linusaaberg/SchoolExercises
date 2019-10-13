@@ -1,0 +1,73 @@
+﻿Chalmers and the University of Gothenburg - CTH/GU
+Computer Science and Engineering Department
+BSc. in Software Engineering and Management
+DIT042 - Object-oriented Programming
+
+
+
+
+Exercises - Reuse in OO Programming
+Inheritance and Composition
+
+
+Code a solution to the questions below. The goal with the list is to (i) understand different reuse mechanisms in OO programming, and (ii) experiencing the differences between Composition and Inheritance. For an extra and advanced exercise, provide main method code for the tasks below. Remember to comply with existing Java naming and coding conventions and provide appropriate encapsulation to your classes and objects.
+Inheritance
+
+
+Q1) To create an RPG game, create a Room that has two different types: A SanctuaryRoom and a DeathRoom. By entering each room the room will return a message according to its type. If a Sanctuary, the room will inform “Rest your energies here hero. You are safe here.”. The Death room, on the other hand, will inform: “Hero, your journey ends here, along with your last breath.”
+
+
+Create a Main that will create 5 rooms of your type. To create more advanced code, use Math.random() so that every time your main create a room, it will randomly decide to create a Sanctuary or Death room.
+
+
+Q2) Create a program to calculate the price of two types of Products: Food and Cleaning. Both types have a name and a baseline price. However, depending on which you one you choose to buy, along with a corresponding amount (integer) implicates the formula used in the total price.
+
+
+Cleaning products have a discount of 10% for each product after the 4th product bought. For instance, if you buy 7 detergentes, at 30.50 SEK each, instead of paying 7 * 30.50 = 213.50 SEK, the total price is actually: brutto_total - discount.
+
+
+213.50 - [0.1 * (7 - 4) * 213.50] = 213.50 - 64.05 = 149.45
+
+
+Note that if we buy 4 detergents , we pay full price: 4 * 30.50 = 122 SEK; since the discount is only for purchases over 4 Cleaning products.
+
+
+Food products may contain (or not) gluten, defined when creating the food product. If the food does not have gluten, the resulting price has a discount of 50% on the total amount paid. For instance, 5 units of quinoa bread (gluten free), at 5 SEK, instead of costing 5 * 5 = 25 SEK will actually cost (5 * 5 * 0.5 = 12.5 SEK). However if the product has gluten, then the client will pay full price, or in our case: 5 * 5 = 25 SEK..
+
+
+Q3) Create classes to represent different bank accounts. Each bank Account will have a balance that starts at zero, the owner’s name and her monthly income. In addition, the count should enable deposit and withdraw that will, respectively, add or reduce from the current balance. The account allows its owners to check a profit projection based on a fixed interest rate that increases the balance on a fixed amount monthly. Thus, an amount of months should be specified to obtain the projection, and a value corresponding to the initial deposit/investment. For instance, the regular projection uses a 10% interest rate, and for 3 month projections when investing 1000 SEK we have:
+
+
+Month 1: 1000 + (1000 * 0.1) = 1100;
+Month 2: 1100 + (1100 * 0.1) = 1210;
+Month 3: 1210 + (1210 * 0.1) = 1331 SEK;
+
+
+The second functionality is a checking the maximum loan that the owner can take on her account, that returns a value based on each owner’s own information, and it will depend on the type of the Account. There are four types of Accounts:
+
+
+* Regular Account: Interest rate is 10% for the projection, and the loan will be the same as the owner’s income in a year (12 months).
+* Student Account: Interest rate is low and equal to 2% each month for the projection. The loaned amount is just half  (50%) of the total yearly income of the student.
+* Investments Account: There is no loan, i.e., the loan returned is zero, however the interest rate is much higher being 30% each month for the projection.
+* Elite Account: The interest rate is 15% each month for the projection, while the loan is The owner’s yearly income added to 10% of a projection considering the investment of the monthly income using the regular 10% interest rate (re-use the regular account behaviour) for a period of 5 months.
+
+
+Composition
+
+
+Q4) To improve your code from Q2, create the class ShoppingCart that is an abstraction of a list of products. The ShoppingCart begins empty, and then you are able to add, remove and verify if the cart contains a specific product by specifying its name. Remember that here a Product can be a Food or a Cleaning product.
+
+
+Another feature of your cart is to calculate the total price that you will pay when buying all products in the cart. Then you will specify the number of products that you will take from each product. For instance, if you specify cart.calculateTotal(5), you will assume that you will take 5 of each Product in the list. So, if you have a Quinoa Bread (gluten free), Detergent, and Pasta (not gluten free, and costing 15 SEK each). The total will be:
+
+
+Quinoa Bread: 5 * 5 * 0.5 = 12.5 SEK
+Detergent: 152.5 - [0.1 * (5 - 4) * 152.5] = 137.25
+Pasta: 5 * 15 = 75 SEK
+Total: 12.5 + 137.25 + 75 = 224.75 SEK
+
+
+Explain using comments in your code how did you use Composition in your design. Specify where is the: Composite, Component and the use of forwarding.
+
+
+Q5) Create a class Bank to create, store and close accounts (remove accounts from the bank). Besides, a Bank can query the loan that it can give to a specific account when specifying the Account owner’s name. In addition, the Bank can calculate the total amount required to provide loans to all of its registered account.
